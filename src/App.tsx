@@ -1,13 +1,10 @@
 import React from 'react';
 import './App.css';
-import Dashboard from './views/Dashboard/Dashboard';
+import Routing from './Routing';
 
 function App() {
   return (
-    <div>
-      <Dashboard/>
-      {/*<SignIn/>*/}
-    </div>
+    <Routing/>
   );
 }
 

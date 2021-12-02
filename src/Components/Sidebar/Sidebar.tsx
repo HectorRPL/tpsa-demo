@@ -82,7 +82,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Dashboard = () => {
+const Sidebar = () => {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -188,4 +188,4 @@ const Dashboard = () => {
   );
 }
 
-export default Dashboard;
+export default Sidebar;

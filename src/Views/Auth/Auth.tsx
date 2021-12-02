@@ -1,8 +1,9 @@
+import NavBar from '../../Components/NavBar/NavBar';
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import SignInForm from '../../Components/Forms/SignInForm/SignInForm';
-import SignInButton from '../../Components/Buttons/SignInButton/SignInButton';
-import NavBar from '../../Components/NavBar/NavBar';
+import SignIn from './SignIn/SignIn';
+import { Route } from 'react-router-dom';
+import ChangePassword from './ChangePassword/ChangePassword';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,18 +17,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
-const SignIn = () => {
+const Auth = () => {
 
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
+
       <NavBar/>
-      <SignInForm/>
-      <SignInButton/>
+
+      <Route path='/auth/signIn' component={SignIn}/>
+      <Route path='/auth/changePassword' component={ChangePassword}/>
+
     </div>
   );
+
 }
 
-export default SignIn;
+export default Auth;

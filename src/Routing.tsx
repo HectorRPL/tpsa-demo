@@ -1,16 +1,20 @@
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import SignIn from './Views/SignIn/SignIn';
 import React from 'react';
 import Layout from './Views/Layout/Layout';
 
 const Routing = () => {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route path='/layout' component={Layout}/>
-        <Route path='/signIn' component={SignIn}/>
-      </Switch>
-    </BrowserRouter>
+    <Switch>
+
+      <Route path="/" exact>
+        <Redirect to="/signIn"/>
+      </Route>
+
+      <Route path="/layout" component={Layout}/>
+      <Route path="/signIn" component={SignIn}/>
+
+    </Switch>
   )
 }
 

@@ -8,6 +8,9 @@ import SearchClientByAccountNumberForm
   from '../../Components/Forms/SearchClientByAccountNumberForm/SearchClientByAccountNumberForm';
 import SearchClient from './SearchClient/SearchClient';
 import Divider from '@material-ui/core/Divider';
+import Client from './Client/Client';
+import Coacreditado from './Coacreditado/Coacreditado';
+import Simulator from './Simulator/Simulator';
 
 
 const Layout = () => {
@@ -15,19 +18,26 @@ const Layout = () => {
   return (
 
     <Sidebar>
-      <h3>Elige un críterio de búsqueda</h3>
-      <Divider/>
-      <SearchClient>
-        <Routes>
-          <Route path="/searchClient/name" element={<SearchClientByNameForm/>}/>
-          <Route path="/searchClient/tdc" element={<SearchClientByTDCForm/>}/>
-          <Route path="/searchClient/tdd" element={<SearchClientByTDDForm/>}/>
-          <Route path="/searchClient/cis" element={<SearchClientByCISForm/>}/>
-          <Route path="/searchClient/accountNumber" element={<SearchClientByAccountNumberForm/>}/>
-        </Routes>
-      </SearchClient>
-    </Sidebar>
 
+
+      <Divider/>
+
+      <Routes>
+        <Route path="/searchClient/*" element={
+          <SearchClient>
+            <Routes>
+              <Route path="/name" element={<SearchClientByNameForm/>}/>
+              <Route path="/tdc" element={<SearchClientByTDCForm/>}/>
+              <Route path="/tdd" element={<SearchClientByTDDForm/>}/>
+              <Route path="/cis" element={<SearchClientByCISForm/>}/>
+              <Route path="/accountNumber" element={<SearchClientByAccountNumberForm/>}/>
+            </Routes>
+          </SearchClient>}/>
+        <Route path="/client/address" element={<Client/>}/>
+        <Route path="/coacreditado/address" element={<Coacreditado/>}/>
+        <Route path="/simulator" element={<Simulator/>}/>
+      </Routes>
+    </Sidebar>
   )
 
 }

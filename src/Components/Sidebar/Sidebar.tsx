@@ -15,8 +15,10 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import PersonIcon from '@material-ui/icons/Person';
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
+import VideoLibraryIcon from '@material-ui/icons/VideoLibrary';
+import { useNavigate } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -86,6 +88,7 @@ const Sidebar = (props: any) => {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -97,7 +100,7 @@ const Sidebar = (props: any) => {
 
   return (
     <div className={classes.root}>
-      <CssBaseline />
+      <CssBaseline/>
       <AppBar
         position="fixed"
         className={clsx(classes.appBar, {
@@ -114,7 +117,7 @@ const Sidebar = (props: any) => {
               [classes.hide]: open,
             })}
           >
-            <MenuIcon />
+            <MenuIcon/>
           </IconButton>
           <Typography variant="h6" noWrap>
             Mini variant drawer
@@ -136,30 +139,36 @@ const Sidebar = (props: any) => {
       >
         <div className={classes.toolbar}>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+            {theme.direction === 'rtl' ? <ChevronRightIcon/> : <ChevronLeftIcon/>}
           </IconButton>
         </div>
-        <Divider />
+        <Divider/>
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+
+          <ListItem button key="cliente" onClick={() => navigate('/layout/client/address')}>
+            <ListItemIcon><PersonIcon/></ListItemIcon>
+            <ListItemText primary="Cliente"/>
+          </ListItem>
+
+          <ListItem button key="coacreditado" onClick={() => navigate('/layout/coacreditado/address')}>
+            <ListItemIcon><PersonAddIcon/></ListItemIcon>
+            <ListItemText primary="Coacreditado"/>
+          </ListItem>
+
         </List>
-        <Divider />
+
+        <Divider/>
+
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          <ListItem button key="simulator" onClick={() => navigate('/layout/simulator')}>
+            <ListItemIcon><VideoLibraryIcon/></ListItemIcon>
+            <ListItemText primary="Simulador"/>
+          </ListItem>
         </List>
+
       </Drawer>
       <main className={classes.content}>
-        <div className={classes.toolbar} />
+        <div className={classes.toolbar}/>
         {props.children}
       </main>
     </div>

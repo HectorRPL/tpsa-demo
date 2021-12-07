@@ -6,7 +6,7 @@ import SearchClientByTDDForm from '../../Components/Forms/SearchClientByTDDForm/
 import SearchClientByCISForm from '../../Components/Forms/SearchClientByCISForm/SearchClientByCISForm';
 import SearchClientByAccountNumberForm
   from '../../Components/Forms/SearchClientByAccountNumberForm/SearchClientByAccountNumberForm';
-import VerticalTabs from './SearchClient/SearchClient';
+import SearchClient from './SearchClient/SearchClient';
 import Divider from '@material-ui/core/Divider';
 
 
@@ -17,7 +17,7 @@ const Layout = () => {
     <Sidebar>
       <h3>Elige un críterio de búsqueda</h3>
       <Divider/>
-      <VerticalTabs>
+      <SearchClient>
         <Routes>
           <Route path="/searchClient/name" element={<SearchClientByNameForm/>}/>
           <Route path="/searchClient/tdc" element={<SearchClientByTDCForm/>}/>
@@ -25,7 +25,7 @@ const Layout = () => {
           <Route path="/searchClient/cis" element={<SearchClientByCISForm/>}/>
           <Route path="/searchClient/accountNumber" element={<SearchClientByAccountNumberForm/>}/>
         </Routes>
-      </VerticalTabs>
+      </SearchClient>
     </Sidebar>
 
   )

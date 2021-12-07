@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const VerticalTabs = (props: any) => {
+const SearchClient = (props: any) => {
   const classes = useStyles();
 
   return (
@@ -81,4 +81,4 @@ const VerticalTabs = (props: any) => {
   );
 }
 
-export default VerticalTabs;
+export default SearchClient;

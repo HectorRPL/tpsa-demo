@@ -33,8 +33,8 @@ const Layout = () => {
               <Route path="/accountNumber" element={<SearchClientByAccountNumberForm/>}/>
             </Routes>
           </SearchClient>}/>
-        <Route path="/client/address" element={<Client/>}/>
-        <Route path="/coCredited/address" element={<CoCredited/>}/>
+        <Route path="/client/*" element={<Client/>}/>
+        <Route path="/coCredited/*" element={<CoCredited/>}/>
         <Route path="/simulator" element={<Simulator/>}/>
       </Routes>
     </Sidebar>

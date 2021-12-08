@@ -20,6 +20,12 @@ import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import VideoLibraryIcon from '@material-ui/icons/VideoLibrary';
 import { useNavigate } from 'react-router-dom';
 
+import MenuItem from '@mui/material/MenuItem';
+import Badge from '@mui/material/Badge';
+import Menu from '@mui/material/Menu';
+import Box from '@mui/material/Box';
+import MailIcon from '@material-ui/icons/Mail';
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -98,80 +104,173 @@ const Sidebar = (props: any) => {
     setOpen(false);
   };
 
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState<null | HTMLElement>(null);
+  const mobileMenuId = 'primary-search-account-menu-mobile';
+  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  const handleMobileMenuClose = () => {
+    setMobileMoreAnchorEl(null);
+  };
+  const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    /*
+    You need to investigate or if is necessary implement this variable: anchorEl
+    here is the documentation:
+    https://mui.com/components/app-bar/
+    section: App Bar with a primary search field
+    https://stackblitz.com/run?file=demo.tsx
+    */
+    console.log(anchorEl);
+    setAnchorEl(event.currentTarget);
+  };
+  const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setMobileMoreAnchorEl(event.currentTarget);
+  };
+
+
+  const renderMobileMenu = (
+    <Menu
+      anchorEl={mobileMoreAnchorEl}
+      anchorOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+      id={mobileMenuId}
+      keepMounted
+      transformOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+      open={isMobileMenuOpen}
+      onClose={handleMobileMenuClose}
+    >
+      <MenuItem>
+        <IconButton aria-label="show 4 new mails" color="inherit">
+          <Badge badgeContent={4} color="error">
+            <MailIcon />
+          </Badge>
+        </IconButton>
+        <p>Messages</p>
+      </MenuItem>
+      <MenuItem>
+        <IconButton
+          aria-label="show 17 new notifications"
+          color="inherit"
+        >
+          <Badge badgeContent={17} color="error">
+            <MailIcon />
+          </Badge>
+        </IconButton>
+        <p>Notifications</p>
+      </MenuItem>
+      <MenuItem onClick={handleProfileMenuOpen}>
+        <IconButton
+          aria-label="show 17 new notifications"
+          color="inherit"
+        >
+          <Badge badgeContent={17} color="error">
+            <MailIcon />
+          </Badge>
+        </IconButton>
+        <p>Notifications</p>
+      </MenuItem>
+    </Menu>
+  );
+
+
   return (
-    <div className={classes.root}>
-      <CssBaseline/>
-      <AppBar
-        position="fixed"
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: open,
-        })}
-      >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            className={clsx(classes.menuButton, {
-              [classes.hide]: open,
-            })}
-          >
-            <MenuIcon/>
-          </IconButton>
-          <Typography variant="h6" noWrap>
-            HSBC
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        variant="permanent"
-        className={clsx(classes.drawer, {
-          [classes.drawerOpen]: open,
-          [classes.drawerClose]: !open,
-        })}
-        classes={{
-          paper: clsx({
+    <Box sx={{ flexGrow: 1 }}>
+      <div className={classes.root}>
+        <CssBaseline/>
+        <AppBar
+          position="fixed"
+          className={clsx(classes.appBar, {
+            [classes.appBarShift]: open,
+          })}
+        >
+          <Toolbar>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+              className={clsx(classes.menuButton, {
+                [classes.hide]: open,
+              })}
+            >
+              <MenuIcon/>
+            </IconButton>
+            <Typography variant="h6" noWrap>
+              HSBC
+            </Typography>
+
+            {/*the next statement send the elements to right in the navbar*/}
+            <Box sx={{ flexGrow: 1 }} />
+
+            <Box>
+              <IconButton
+                aria-label="show more"
+                aria-controls={mobileMenuId}
+                aria-haspopup="true"
+                onClick={handleMobileMenuOpen}
+                color="inherit"
+              >
+                <MenuIcon />
+              </IconButton>
+            </Box>
+            {renderMobileMenu}
+          </Toolbar>
+        </AppBar>
+
+        <Drawer
+          variant="permanent"
+          className={clsx(classes.drawer, {
             [classes.drawerOpen]: open,
             [classes.drawerClose]: !open,
-          }),
-        }}
-      >
-        <div className={classes.toolbar}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon/> : <ChevronLeftIcon/>}
-          </IconButton>
-        </div>
-        <Divider/>
-        <List>
+          })}
+          classes={{
+            paper: clsx({
+              [classes.drawerOpen]: open,
+              [classes.drawerClose]: !open,
+            }),
+          }}
+        >
+          <div className={classes.toolbar}>
+            <IconButton onClick={handleDrawerClose}>
+              {theme.direction === 'rtl' ? <ChevronRightIcon/> : <ChevronLeftIcon/>}
+            </IconButton>
+          </div>
+          <Divider/>
+          <List>
 
-          <ListItem button key="client" onClick={() => navigate('/layout/client/address')}>
-            <ListItemIcon><PersonIcon/></ListItemIcon>
-            <ListItemText primary="Cliente"/>
-          </ListItem>
+            <ListItem button key="client" onClick={() => navigate('/layout/client/address')}>
+              <ListItemIcon><PersonIcon/></ListItemIcon>
+              <ListItemText primary="Cliente"/>
+            </ListItem>
 
-          <ListItem button key="coCredited" onClick={() => navigate('/layout/coCredited/address')}>
-            <ListItemIcon><PersonAddIcon/></ListItemIcon>
-            <ListItemText primary="Coacreditado"/>
-          </ListItem>
+            <ListItem button key="coCredited" onClick={() => navigate('/layout/coCredited/address')}>
+              <ListItemIcon><PersonAddIcon/></ListItemIcon>
+              <ListItemText primary="Coacreditado"/>
+            </ListItem>
 
-        </List>
+          </List>
 
-        <Divider/>
+          <Divider/>
 
-        <List>
-          <ListItem button key="simulator" onClick={() => navigate('/layout/simulator')}>
-            <ListItemIcon><VideoLibraryIcon/></ListItemIcon>
-            <ListItemText primary="Simulador"/>
-          </ListItem>
-        </List>
+          <List>
+            <ListItem button key="simulator" onClick={() => navigate('/layout/simulator')}>
+              <ListItemIcon><VideoLibraryIcon/></ListItemIcon>
+              <ListItemText primary="Simulador"/>
+            </ListItem>
+          </List>
 
-      </Drawer>
-      <main className={classes.content}>
-        <div className={classes.toolbar}/>
-        {props.children}
-      </main>
-    </div>
+        </Drawer>
+        <main className={classes.content}>
+          <div className={classes.toolbar}/>
+          {props.children}
+        </main>
+      </div>
+    </Box>
+
   );
 }
 

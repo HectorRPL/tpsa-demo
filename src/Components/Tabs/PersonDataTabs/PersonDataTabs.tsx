@@ -37,7 +37,7 @@ const PersonDataTabs = (props: any) => {
         aria-label="icon label tabs example"
       >
         <Tab icon={<PersonPinIcon/>} label="Identidad" onClick={() => navigate(`/layout/${props.children[0]}`)}/>
-        <Tab icon={<PhoneIcon/>} label="Contacto" onClick={() => navigate(`/layout/${props.children[1]}`)} />
+        <Tab icon={<PhoneIcon/>} label="Dirección" onClick={() => navigate(`/layout/${props.children[1]}`)} />
         <Tab icon={<FavoriteIcon/>} label="Fiscal" onClick={() => navigate(`/layout/${props.children[2]}`)} />
       </Tabs>
     </Paper>

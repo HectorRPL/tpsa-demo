@@ -120,7 +120,7 @@ const Sidebar = (props: any) => {
             <MenuIcon/>
           </IconButton>
           <Typography variant="h6" noWrap>
-            Mini variant drawer
+            HSBC
           </Typography>
         </Toolbar>
       </AppBar>

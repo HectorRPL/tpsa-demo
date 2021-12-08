@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const SearchClient = (props: any) => {
+const SearchClientTabs = (props: any) => {
   const classes = useStyles();
 
   return (
@@ -65,11 +65,11 @@ const SearchClient = (props: any) => {
         className={classes.tabs}
       >
 
-        <Tab label="Nombre" component={Link} to="/layout/searchClient/name"/>
-        <Tab label="TDC"    component={Link} to="/layout/searchClient/tdc"/>
-        <Tab label="TDD"    component={Link} to="/layout/searchClient/tdd"/>
-        <Tab label="cis"    component={Link} to="/layout/searchClient/cis"/>
-        <Tab label="CTA"    component={Link} to="/layout/searchClient/accountNumber"/>
+        <Tab label="Nombre" component={Link} to="/searchClient/name"/>
+        <Tab label="TDC"    component={Link} to="/searchClient/tdc"/>
+        <Tab label="TDD"    component={Link} to="/searchClient/tdd"/>
+        <Tab label="cis"    component={Link} to="/searchClient/cis"/>
+        <Tab label="CTA"    component={Link} to="/searchClient/accountNumber"/>
       </Tabs>
 
       <TabPanel value={0} index={0}>{props.children}</TabPanel>
@@ -79,6 +79,7 @@ const SearchClient = (props: any) => {
       <TabPanel value={0} index={4}>{props.children}</TabPanel>
     </div>
   );
+
 }
 
-export default SearchClient;
+export default SearchClientTabs;

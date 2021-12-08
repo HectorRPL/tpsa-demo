@@ -145,12 +145,12 @@ const Sidebar = (props: any) => {
         <Divider/>
         <List>
 
-          <ListItem button key="cliente" onClick={() => navigate('/layout/client/address')}>
+          <ListItem button key="client" onClick={() => navigate('/layout/client/address')}>
             <ListItemIcon><PersonIcon/></ListItemIcon>
             <ListItemText primary="Cliente"/>
           </ListItem>
 
-          <ListItem button key="coacreditado" onClick={() => navigate('/layout/coacreditado/address')}>
+          <ListItem button key="coCredited" onClick={() => navigate('/layout/coCredited/address')}>
             <ListItemIcon><PersonAddIcon/></ListItemIcon>
             <ListItemText primary="Coacreditado"/>
           </ListItem>

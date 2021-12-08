@@ -9,8 +9,8 @@ import SearchClientByAccountNumberForm
 import SearchClient from './SearchClient/SearchClient';
 import Divider from '@material-ui/core/Divider';
 import Client from './Client/Client';
-import Coacreditado from './Coacreditado/Coacreditado';
 import Simulator from './Simulator/Simulator';
+import CoCredited from './CoCredited/CoCredited';
 
 
 const Layout = () => {
@@ -34,7 +34,7 @@ const Layout = () => {
             </Routes>
           </SearchClient>}/>
         <Route path="/client/address" element={<Client/>}/>
-        <Route path="/coacreditado/address" element={<Coacreditado/>}/>
+        <Route path="/coCredited/address" element={<CoCredited/>}/>
         <Route path="/simulator" element={<Simulator/>}/>
       </Routes>
     </Sidebar>
